@@ -1,7 +1,7 @@
-# No Doomscroll for Insta
+# Endless Feed Off
 
 <p align="center">
-  <img src="docs/reelsiz-tanitim.gif" alt="Tanıtım / Demo" width="300">
+  <img src="docs/tanitim.gif" alt="Tanıtım / Demo" width="300">
 </p>
 
 <p align="center"><b><a href="#türkçe">Türkçe</a> · <a href="#english">English</a></b></p>
@@ -38,16 +38,16 @@ Bir Reels izlemek sorun değil. Sorun, bir tanesine dokununca kendini bir saat b
 1. Instagram uygulamasını sil. Hesabın silinmez.
 2. App Store'dan ücretsiz **Userscripts** uygulamasını kur. Uygulamayı aç ve kodların saklanacağı bir klasör seç.
 3. **Ayarlar → Uygulamalar → Safari → Eklentiler → Userscripts**'i aç.
-4. [`instagram-reelsiz.user.js`](instagram-reelsiz.user.js) dosyasını indir, **Dosyalar** uygulamasında 2. adımda seçtiğin klasöre kaydet.
+4. [`endless-feed-off.user.js`](endless-feed-off.user.js) dosyasını indir, **Dosyalar** uygulamasında 2. adımda seçtiğin klasöre kaydet.
 5. Safari'de instagram.com'u aç ve giriş yap. Userscripts izin isterse **"Always Allow on This Website"** seç.
 6. **Paylaş → Ana Ekrana Ekle**. **"Web Uygulaması Olarak Aç" kapalı olmalı**, aksi halde eklenti çalışmaz.
 
 ### Bilinen sınırlar
 
-- Instagram web sitesini haber vermeden değiştirebilir. Bu durumda kodun güncellenmesi gerekir.
+- Instagram web sitesini haber vermeden değiştirebilir. Bu durumda kodun güncellenmesi gerekir. Kod, bu depodaki yeni sürümü Userscripts üzerinden kendiliğinden alacak şekilde ayarlıdır.
 - Reklam tanıma, gönderideki "Ad / Sponsored / Sponsorlu" etiketine bakar. Instagram etiketi değiştirirse listeye eklenmesi gerekir.
 
-*Sadece iPhone için test edildi.*
+*Sadece iPhone için test edildi. Bu proje Instagram veya Meta ile bağlantılı değildir.*
 
 ### Lisans
 
@@ -85,16 +85,16 @@ Watching a Reel isn't the problem. The problem is tapping one and finding yourse
 1. Delete the Instagram app. Your account is not affected.
 2. Install the free **Userscripts** app from the App Store. Open it and choose a folder to store scripts.
 3. Go to **Settings → Apps → Safari → Extensions → Userscripts** and turn it on.
-4. Download [`instagram-reelsiz.user.js`](instagram-reelsiz.user.js) and save it to the folder from step 2 using the **Files** app.
+4. Download [`endless-feed-off.user.js`](endless-feed-off.user.js) and save it to the folder from step 2 using the **Files** app.
 5. Open instagram.com in Safari and log in. If Userscripts asks for permission, choose **"Always Allow on This Website"**.
 6. **Share → Add to Home Screen**. **"Open as Web App" must be turned off**, otherwise the extension won't run.
 
 ### Known limitations
 
-- Instagram can change its website at any time, which may require a code update.
+- Instagram can change its website at any time, which may require a code update. The script is set up to pull new versions from this repository automatically through Userscripts.
 - Ad detection looks for the "Ad / Sponsored / Sponsorlu" label on posts. If Instagram changes the label, it needs to be added to the list.
 
-*Tested on iPhone only.*
+*Tested on iPhone only. This project is not affiliated with Instagram or Meta.*
 
 ### License
 

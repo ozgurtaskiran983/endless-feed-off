@@ -1,10 +1,12 @@
 // ==UserScript==
-// @name         Instagram Reelsiz
-// @namespace    reelsiz
-// @version      1.5.2
-// @description  Reels sekmesini ve Reels kaydırma sayfasını kapatır, reklamları gizler. Akıştaki Reels yerinde izlenebilir.
+// @name         Endless Feed Off
+// @namespace    endless-feed-off
+// @version      1.6.0
+// @description  instagram.com'da Reels sekmesini ve sonsuz Reels kaydırmasını kapatır, reklamları gizler. Akıştaki Reels yerinde izlenebilir.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
+// @updateURL    https://raw.githubusercontent.com/ozgurtaskiran983/endless-feed-off/main/endless-feed-off.user.js
+// @downloadURL  https://raw.githubusercontent.com/ozgurtaskiran983/endless-feed-off/main/endless-feed-off.user.js
 // ==/UserScript==
 
 (function () {
@@ -15,11 +17,14 @@
     kesfetGizle: true,   // Keşfet'teki video/foto ızgarasını gizle (arama çalışır)
     reklamGizle: true,   // Reklam gönderilerini gizle
     // Reklam etiketi: İngilizce (Ad, Sponsored) ve Türkçe (Sponsorlu)
-    reklamYazilari: ['Ad', 'Sponsored', 'Sponsorlu']
+    reklamYazilari: ['Ad', 'Sponsored', 'Sponsorlu'],
+    // Bir gönderinin reklam etiketi geç yüklenebilir: her gönderiye bu kadar kez bakılır
+    // (her bakış arası 0,3 sn, yani yaklaşık 3 saniye)
+    reklamBakisSayisi: 10
   };
 
-  // "Ad Blocked" görseli (ikon + başlık). Koyu/açık tema için iki renk.
-  function reklamGorseli(baslikRengi, aciklamaRengi) {
+  // "Ad Blocked" görseli (ikon + başlık). Koyu/açık tema için başlık rengi değişir.
+  function reklamGorseli(baslikRengi) {
     const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='260' height='150' viewBox='0 0 260 150'>
       <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
         <stop offset='0' stop-color='#F58529'/><stop offset='1' stop-color='#DD2A7B'/>
@@ -34,35 +39,35 @@
     </svg>`;
     return `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}")`;
   }
-  const koyuGorsel = reklamGorseli('#f5f5f5', '#a8a8a8');
-  const acikGorsel = reklamGorseli('#262626', '#737373');
+  const koyuGorsel = reklamGorseli('#f5f5f5');
+  const acikGorsel = reklamGorseli('#262626');
 
   const css = `
     /* Reels sekmesi (alt menü ve profillerdeki sekme). İçinde video olan linklere dokunma. */
     a[href*="/reels/"]:not(:has(video)) { display: none !important; }
 
     /* Keşfet ızgarası */
-    html.reelsiz-kesfet main a[href*="/p/"],
-    html.reelsiz-kesfet main a[href*="/reel/"] { display: none !important; }
+    html.efo-kesfet main a[href*="/p/"],
+    html.efo-kesfet main a[href*="/reel/"] { display: none !important; }
 
     /* Reklamlar: gönderiyi silmiyoruz (silince akış takılıyor), üstünü örtüyoruz.
-       Boyutu aynı kaldığı için Instagram yeni gönderileri yüklemeye devam eder. */
-    article.reelsiz-reklam { position: relative !important; }
+       Boyutu aynı kaldığı için yeni gönderiler yüklenmeye devam eder. */
+    article.efo-reklam { position: relative !important; }
     /* Alt katman: reklamın tamamını düz renkle örter */
-    article.reelsiz-reklam::before {
+    article.efo-reklam::before {
       content: ""; position: absolute; inset: 0; z-index: 2147483646;
       background: #000;
     }
-    /* Üst katman: kesikli çerçeve + ortada ikon ve yazı */
-    article.reelsiz-reklam::after {
+    /* Üst katman: çift kesikli çerçeve + ortada ikon ve yazı */
+    article.efo-reklam::after {
       content: ""; position: absolute; inset: 16px; z-index: 2147483647;
       border: 2px dashed #3a3a3a; border-radius: 12px;
       outline: 2px dashed #3a3a3a; outline-offset: -12px; /* içteki ikinci kesikli çizgi */
       background: ${koyuGorsel} center / 260px 150px no-repeat;
     }
     @media (prefers-color-scheme: light) {
-      article.reelsiz-reklam::before { background: #fafafa; }
-      article.reelsiz-reklam::after {
+      article.efo-reklam::before { background: #fafafa; }
+      article.efo-reklam::after {
         border-color: #dbdbdb; outline-color: #dbdbdb;
         background: ${acikGorsel} center / 260px 150px no-repeat;
       }
@@ -70,9 +75,9 @@
   `;
 
   function stilEkle() {
-    if (document.getElementById('reelsiz-stil')) return;
+    if (document.getElementById('efo-stil')) return;
     const s = document.createElement('style');
-    s.id = 'reelsiz-stil';
+    s.id = 'efo-stil';
     s.textContent = css;
     (document.head || document.documentElement).appendChild(s);
   }
@@ -91,8 +96,8 @@
     }
   }, true);
 
-  // 2) Yine de Reels sayfasına girildiyse geri dön.
-  //    İstisna: Instagram dışından (WhatsApp vb.) gelen bir Reels linki. O tek Reels izlenebilir.
+  // 2) Yine de Reels sayfasına girildiyse ana sayfaya dön.
+  //    İstisna: başka bir platformdan linkle gelen Reels. O tek Reels izlenebilir.
   const reelKodu = yol => { const m = yol.match(/^\/reels?\/([^/]+)/); return m ? m[1] : null; };
   let disaridanReel = reelKodu(location.pathname); // sayfa ilk açıldığındaki adres
 
@@ -111,29 +116,32 @@
       disaridanReel = null; // Reels sayfasından çıkıldı, izin bitti
       const kesfette = AYAR.kesfetGizle &&
         yol.startsWith('/explore') && !yol.startsWith('/explore/search');
-      document.documentElement.classList.toggle('reelsiz-kesfet', kesfette);
+      document.documentElement.classList.toggle('efo-kesfet', kesfette);
     }
     if (AYAR.reklamGizle) reklamlariGizle();
   }
 
-  // 3) Reklam gönderilerini bul: başlığında tek başına "Ad" yazan gönderiler
+  // 3) Reklam gönderilerini bul: içinde tek başına "Ad" / "Sponsored" / "Sponsorlu" yazan gönderiler.
+  //    Etiket geç yüklenebildiği için her gönderiye birkaç kez bakılır.
   function reklamlariGizle() {
-    document.querySelectorAll('article:not([data-reelsiz])').forEach(art => {
-      art.setAttribute('data-reelsiz', '1');
+    document.querySelectorAll('article:not(.efo-reklam)').forEach(art => {
+      const bakis = Number(art.dataset.efoBakis || 0);
+      if (bakis >= AYAR.reklamBakisSayisi) return; // yeterince bakıldı, reklam değil
+      art.dataset.efoBakis = bakis + 1;
       const etiketVar = [...art.querySelectorAll('span, a, div')].some(el =>
         el.childElementCount === 0 &&
         AYAR.reklamYazilari.includes(el.textContent.trim()));
-      if (etiketVar) art.classList.add('reelsiz-reklam');
+      if (etiketVar) art.classList.add('efo-reklam');
     });
     // Örtünün altındaki reklam videoları sessiz ve durmuş kalsın
-    document.querySelectorAll('article.reelsiz-reklam video').forEach(v => {
+    document.querySelectorAll('article.efo-reklam video').forEach(v => {
       v.muted = true;
       if (!v.paused) v.pause();
     });
   }
 
   // 4) DM'den ya da dışarıdan linkle açılan Reels: ilkini izlet, bir sonrakine geçilirse çık.
-  //    Instagram kaydırınca adresi her zaman değiştirmiyor, o yüzden oynayan videoyu takip ediyoruz.
+  //    Kaydırınca adres her zaman değişmiyor, o yüzden oynayan videoyu takip ediyoruz.
   const dmde = () => location.pathname.startsWith('/direct/');
   const linkReelinde = () => !!disaridanReel && reelsAdresi(location.pathname);
   const izlenecekYer = () => dmde() || linkReelinde();
@@ -158,13 +166,18 @@
     }
   }, 500);
 
-  // 5) "Uygulamayı indir" şeridi: Safari'nin okuduğu etiketi silmeye çalış
+  // 5) "Uygulamayı indir" şeridi: Safari'nin okuduğu etiketi silmeye çalış.
+  //    Safari bu etiketi sayfa yüklenirken okur; yüklendikten sonra izlemeyi bırakıyoruz (pil için).
   function seritEtiketiniSil() {
     document.querySelectorAll('meta[name="apple-itunes-app"]').forEach(m => m.remove());
   }
   seritEtiketiniSil();
-  new MutationObserver(seritEtiketiniSil)
-    .observe(document.documentElement, { childList: true, subtree: true });
+  const seritGozcusu = new MutationObserver(seritEtiketiniSil);
+  seritGozcusu.observe(document.documentElement, { childList: true, subtree: true });
+  window.addEventListener('load', () => {
+    seritEtiketiniSil();
+    setTimeout(() => seritGozcusu.disconnect(), 3000);
+  });
 
   kontrol();
   setInterval(kontrol, 300);
