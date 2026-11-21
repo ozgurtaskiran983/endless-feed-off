@@ -1,7 +1,7 @@
 # No Doomscroll for Insta
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/f354e2bb-8c18-4999-9b3a-19a457ff8ed0" width="300" controls></video>
+https://github.com/user-attachments/assets/61118394-082f-43fb-b835-4c3bd5b4acb7
 </p>
 
 <p align="center"><b><a href="#türkçe">Türkçe</a> · <a href="#english">English</a></b></p>
