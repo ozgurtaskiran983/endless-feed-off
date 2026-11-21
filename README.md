@@ -1,19 +1,10 @@
 # No Doomscroll for Insta
 
-
-
-https://github.com/user-attachments/assets/f354e2bb-8c18-4999-9b3a-19a457ff8ed0
-
-
-**[Türkçe](#türkçe) · [English](#english)**
-
 <p align="center">
-  <a href="docs/reelsiz-tanitim.mp4">
-    <img src="docs/reelsiz-tanitim-kapak.png" alt="Tanıtım videosu / Demo video" width="280">
-  </a>
-  <br>
-  <a href="docs/reelsiz-tanitim.mp4"><b>▶ Videoyu izle / Watch the video</b></a>
+  <video src="https://github.com/user-attachments/assets/f354e2bb-8c18-4999-9b3a-19a457ff8ed0" width="300" controls></video>
 </p>
+
+<p align="center"><b><a href="#türkçe">Türkçe</a> · <a href="#english">English</a></b></p>
 
 ---
 
