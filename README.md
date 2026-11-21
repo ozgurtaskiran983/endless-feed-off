@@ -1,7 +1,9 @@
 # No Doomscroll for Insta
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/61118394-082f-43fb-b835-4c3bd5b4acb7" controls></video>
+  <img src="docs/reelsiz-tanitim.gif" alt="Tanıtım / Demo" width="300">
+  <br>
+  <a href="docs/reelsiz-tanitim.mp4">🔊 Sesli izle / Watch with sound</a>
 </p>
 
 <p align="center"><b><a href="#türkçe">Türkçe</a> · <a href="#english">English</a></b></p>
