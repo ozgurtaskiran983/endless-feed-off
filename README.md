@@ -3,7 +3,11 @@
 **[Türkçe](#türkçe) · [English](#english)**
 
 <p align="center">
-  <img src="docs/ad-blocked-dark.png" alt="Ad Blocked preview" width="300">
+  <a href="docs/reelsiz-tanitim.mp4">
+    <img src="docs/reelsiz-tanitim-kapak.png" alt="Tanıtım videosu / Demo video" width="280">
+  </a>
+  <br>
+  <a href="docs/reelsiz-tanitim.mp4"><b>▶ Videoyu izle / Watch the video</b></a>
 </p>
 
 ---
@@ -21,6 +25,8 @@ Bir Reels izlemek sorun değil. Sorun, bir tanesine dokununca kendini bir saat b
 - Arkadaşının DM'den attığı Reels'i izlersin, aşağı kaydırınca sohbete geri dönersin.
 - Başka bir platformdan gelen Reels linkini açıp izlersin. Sonrakine geçmeye çalışınca ana sayfaya dönersin.
 - Reklamlar gizlenir. Yerinde sade bir "Ad Blocked" alanı kalır, kaydırıp geçersin.
+
+  <img src="docs/ad-blocked-dark.png" alt="Ad Blocked" width="240">
 - Keşfet'in video duvarı kalkar, arama çalışmaya devam eder.
 - Akış, hikayeler, mesajlar, beğeni, yorum ve kaydetme normal çalışır.
 
@@ -62,6 +68,8 @@ Watching a Reel isn't the problem. The problem is tapping one and finding yourse
 - Reels a friend sends you in DMs play normally; swipe down and you're back in the chat.
 - Reels links shared from other platforms open and play; try to swipe to the next one and you're sent to the home feed.
 - Ads are hidden. A clean "Ad Blocked" placeholder takes their place, just scroll past.
+
+  <img src="docs/ad-blocked-dark.png" alt="Ad Blocked" width="240">
 - The Explore video wall is hidden; search still works.
 - Feed, stories, messages, likes, comments and saves work as usual.
 
