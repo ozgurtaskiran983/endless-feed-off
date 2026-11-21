@@ -34,7 +34,7 @@ Bir Reels izlemek sorun değil. Sorun, bir tanesine dokununca kendini bir saat b
 
 - Instagram şifreni başka bir uygulamaya vermezsin.
 - Ekranın kaydedilmez ya da izlenmez.
-- Ne yaptığını açıkça görebilirsin, gizlimiz yok.
+- Açık kaynak ve ücretsiz. Ne yaptığını açıkça görebilirsin, gizlimiz yok.
 - Instagram Türkçe de olsa İngilizce de olsa çalışır.
 
 ### Kurulum (iPhone)
@@ -52,6 +52,10 @@ Bir Reels izlemek sorun değil. Sorun, bir tanesine dokununca kendini bir saat b
 - Reklam tanıma, gönderideki "Ad / Sponsored / Sponsorlu" etiketine bakar. Instagram etiketi değiştirirse listeye eklenmesi gerekir.
 
 *Sadece iPhone için test edildi.*
+
+### Lisans
+
+[MIT](LICENSE). Ücretsiz kullanabilir, değiştirebilir ve paylaşabilirsin.
 
 ---
 
@@ -77,7 +81,7 @@ Watching a Reel isn't the problem. The problem is tapping one and finding yourse
 
 - You never give your Instagram password to another app.
 - Your screen is never recorded or monitored.
-- You can see exactly what it does. Nothing hidden.
+- Open source and free. You can see exactly what it does. Nothing hidden.
 - Works whether Instagram is set to English or Turkish.
 
 ### Installation (iPhone)
@@ -95,3 +99,7 @@ Watching a Reel isn't the problem. The problem is tapping one and finding yourse
 - Ad detection looks for the "Ad / Sponsored / Sponsorlu" label on posts. If Instagram changes the label, it needs to be added to the list.
 
 *Tested on iPhone only.*
+
+### License
+
+[MIT](LICENSE). Free to use, modify and share.
