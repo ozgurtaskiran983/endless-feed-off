@@ -2,8 +2,6 @@
 
 <p align="center">
   <img src="docs/reelsiz-tanitim.gif" alt="Tanıtım / Demo" width="300">
-  <br>
-  <a href="docs/reelsiz-tanitim.mp4">🔊 Sesli izle / Watch with sound</a>
 </p>
 
 <p align="center"><b><a href="#türkçe">Türkçe</a> · <a href="#english">English</a></b></p>
