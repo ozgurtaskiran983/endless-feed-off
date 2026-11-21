@@ -1,5 +1,10 @@
 # No Doomscroll for Insta
 
+
+
+https://github.com/user-attachments/assets/f354e2bb-8c18-4999-9b3a-19a457ff8ed0
+
+
 **[Türkçe](#türkçe) · [English](#english)**
 
 <p align="center">
